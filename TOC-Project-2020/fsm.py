@@ -141,8 +141,8 @@ class TocMachine(GraphMachine):
         send_button_message(reply_token, buttons_template2)
 
     def is_going_to_question1(self, event):
-            text = event.message.text
-            return text.lower() == "q1"
+        text = event.message.text
+        return text.lower() == "q1"
     
     def on_enter_question1(self, event):
         reply_token = event.reply_token
@@ -215,7 +215,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
             text='Q2',
-            thumbnail_image_url='<a href="https://i.ibb.co/SrPF2QV/61680001o72r9o05op2o.jpg',
+            thumbnail_image_url='https://i.ibb.co/SrPF2QV/61680001o72r9o05op2o.jpg',
             actions=[
                 MessageTemplateAction(
                     label='2',
