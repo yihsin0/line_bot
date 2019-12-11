@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2","state3","state4","state5","state6","start","chat","question1","one1","one2","one3","one4","two1","two2","two3","two4","question2"],
+    states=["user", "state1", "state2","state3","state4","state5","state6","start","chat","back","question1","one1","one2","one3","one4","two1","two2","two3","two4","question2"],
     transitions=[
         {"trigger": "advance","source": "start","dest": "state1","conditions": "is_going_to_state1",},
         {"trigger": "advance","source": "user","dest": "start","conditions": "is_going_to_start",},
@@ -35,7 +35,7 @@ machine = TocMachine(
         {"trigger": "advance","source": "question2","dest": "two3","conditions": "is_going_to_two3",},
         {"trigger": "advance","source": "question2","dest": "two4","conditions": "is_going_to_two4",},
         {"trigger": "go_back2","source": ["one1","one2","one3","one4"],"dest": "start"},
-        {"trigger": "go_back", "source": ["state1", "state2", "state3","state4","state5","state6","one1","question1","chat"], "dest": "user"},
+        {"trigger": "go_back", "source": ["state1", "state2", "state3","state4","state5","state6","one1","question1","chat","back"], "dest": "user"},
         
 
     ],

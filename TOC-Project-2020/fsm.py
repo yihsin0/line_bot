@@ -135,6 +135,10 @@ class TocMachine(GraphMachine):
                     label='Q2',
                     text='Q2'
                 )
+                MessageTemplateAction(
+                    label='Back',
+                    text='back'
+                )
             ]    
             )
         )
@@ -150,7 +154,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
             text='Q1',
-            thumbnail_image_url='https://i.ibb.co/3RhP6jB/q1.jpg',
+            #thumbnail_image_url='https://i.ibb.co/3RhP6jB/q1.jpg',
             actions=[
                 MessageTemplateAction(
                     label='1',
@@ -266,6 +270,14 @@ class TocMachine(GraphMachine):
         #count = count + 10
         send_text_message(reply_token, "答錯了～ 若要繼續挑戰請輸入：金頭腦")
         self.go_back2()
+    def is_going_to_back(self, event):
+        text = event.message.text
+        return text.lower() == "back"
+    
+    def on_enter_back(self, event):
+        print("I'm entering state1")
 
+        reply_token = event.reply_token
+        self.go_back()
     
     
