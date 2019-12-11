@@ -129,15 +129,11 @@ class TocMachine(GraphMachine):
             actions=[
                 MessageTemplateAction(
                     label='Q1',
-                    text='Q1'
+                    text='q1'
                 ),
                 MessageTemplateAction(
                     label='Q2',
-                    text='Q2'
-                )
-                MessageTemplateAction(
-                    label='Back',
-                    text='back'
+                    text='q2'
                 )
             ]    
             )
@@ -154,7 +150,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
             text='Q1',
-            #thumbnail_image_url='https://i.ibb.co/3RhP6jB/q1.jpg',
+            thumbnail_image_url='https://i.ibb.co/3RhP6jB/q1.jpg',
             actions=[
                 MessageTemplateAction(
                     label='1',
@@ -176,6 +172,7 @@ class TocMachine(GraphMachine):
             )
         )
         send_button_message(reply_token, buttons_template2)
+
 
     def is_going_to_one1(self, event):
         text = event.message.text
@@ -209,8 +206,8 @@ class TocMachine(GraphMachine):
 
 
     def is_going_to_question2(self, event):
-            text = event.message.text
-            return text.lower() == "q2"
+        text = event.message.text
+        return text.lower() == "q2"
     
     def on_enter_question2(self, event):
         reply_token = event.reply_token
@@ -270,14 +267,6 @@ class TocMachine(GraphMachine):
         #count = count + 10
         send_text_message(reply_token, "答錯了～ 若要繼續挑戰請輸入：金頭腦")
         self.go_back2()
-    def is_going_to_back(self, event):
-        text = event.message.text
-        return text.lower() == "back"
-    
-    def on_enter_back(self, event):
-        print("I'm entering state1")
 
-        reply_token = event.reply_token
-        self.go_back()
     
     
