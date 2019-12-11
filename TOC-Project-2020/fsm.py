@@ -3,6 +3,7 @@ from linebot.models import *
 from utils import send_text_message
 from utils import send_image_url
 from utils import send_button_message
+#from utils import movie
 from linebot.models import TemplateSendMessage, ButtonsTemplate, MessageTemplateAction
 
 class TocMachine(GraphMachine):
@@ -125,7 +126,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
             text='題目',
-            thumbnail_image_url='https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwif_sTdrqzmAhVPG6YKHdyyDSwQjRx6BAgBEAQ&url=https%3A%2F%2Fvemma888.pixnet.net%2Fblog%2Fpost%2F38742860-%25E6%2595%25B8%25E5%25AD%25B8%25E5%2595%258F%25E9%25A1%258C...%25E5%258B%2595%25E5%258B%2595%25E8%2585%25A6&psig=AOvVaw0wmVafyR6RZdo0OboOfapp&ust=1576111382381932',
+            thumbnail_image_url='https://static.newmobilelife.com/wp-content/uploads/2014/12/LINE03.png',
             actions=[
                 MessageTemplateAction(
                     label='Q1',
@@ -267,6 +268,13 @@ class TocMachine(GraphMachine):
         #count = count + 10
         send_text_message(reply_token, "答錯了～ 若要繼續挑戰請輸入：金頭腦")
         self.go_back2()
-
     
+    def is_going_to_back(self, event):
+        text = event.message.text
+        return text.lower() == "back"
+    
+    def on_enter_back(self, event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "要輸入start喔！")
+        self.go_back()
     
